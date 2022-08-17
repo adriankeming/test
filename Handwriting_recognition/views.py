@@ -14,7 +14,26 @@ from PIL import Image
 from django.shortcuts import render
 from django.conf import settings
 
-from .forms import ImageUploadForm
+# from .forms import ImageUploadForm
+
+from django.shortcuts import render
+from django.http import JsonResponse
+from .forms import ImageFileUploadForm
+
+# Create your views here.
+
+def image_upload_method(request):
+    if request.method == "POST":
+        form = ImageFileUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return JsonResponse({'error':False, 'message': 'Uploaded Successfully.'})
+        else:
+            return JsonResponse({'error':True, 'errors': form.errors})
+    else:
+        form = ImageFileUploadForm()
+        return render(request, 'upload_ui.html', {'form': form})
+
 ###
 #相對路徑搜尋
 absolutepath = os.path.abspath(__file__)
@@ -139,7 +158,7 @@ def index(request):
     predicted_label = None
 
     if request.method == 'POST':
-        form = ImageUploadForm(request.POST, request.FILES)
+        form = ImageFileUploadForm(request.POST, request.FILES)
         if form.is_valid():
             # passing the image as base64 string to avoid storing it to DB or filesystem
             image = form.cleaned_data['image']
@@ -155,12 +174,12 @@ def index(request):
                 # predicted_label = "Prediction Error"
 
     else:
-        form = ImageUploadForm()
+        form = ImageFileUploadForm()
 
     context = {
         'form': form,
         'image_uri': image_uri,
         'predicted_label': predicted_label,
     }
-    return render(request, 'index_hand.html', context)
-    # return render(request, 'Handwriting_recognition/index_hand.html', context)
+    return render(request, 'upload_ui.html', context)
+    

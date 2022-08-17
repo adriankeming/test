@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <title>UCCU Tech 出勤打卡系統</title>
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <style type="text/css">
+    body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+	    margin:0;
+	    padding:0;
+    }
+    table {
+	    border-collapse:collapse;
+	    border-spacing:100;
+    }
+    fieldset, img {
+	    border:0;
+    }
+    address, caption, cite, code, dfn, em, strong, th, var {
+	    font-style:normal;
+	    font-weight:normal;
+    }
+    ol, ul {
+	    list-style:none;
+    }
+    caption, th {
+	    text-align:left;
+    }
+
+    q:before, q:after {
+	    content:'';
+    }
+    abbr, acronym {
+	    border:0;
+    }
+
+    nav{
+	    background-color: #d1d1d1;
+	    width: 100%;
+	    height: 5vw;
+	    position: relative;
+
+
+    }
+    nav ul{
+	    position: absolute;
+	    top: 0vw;
+	    left: 60vw;
+    }
+
+    nav ul li{
+	    float: left;
+    }
+
+    nav ul li a{
+	    text-align: center;
+	    text-decoration: none;
+	    display: block;
+	    font-size: 1vw;
+	    width: 8vw;
+	    line-height: 5vw;
+	    color: black;
+	    letter-spacing: 2px;
+    }
+    nav ul li a:hover{
+    	color: #F29600;
+    }
+    #LOGO{
+    	font-size: 1vw;
+	    width: 5vw;
+	    height: 5vw;
+	    text-align: center;
+	    line-height: 5vw;
+	    background-color: white;
+	    position: absolute;
+	    left: 5vw;
+    }
+
+    main{
+    	background-color: #fdeee9;
+	    padding-bottom: 2vw
+    }
+    main h1{
+    	margin-left: 2vw;
+	    font-size: 4vw;
+    	line-height:7vw; 
+    }
+    main h3{
+	    text-align: center;
+    	font-size: 3vw;
+	    line-height: 6vw;
+    }
+    #CHECK{
+	    width: 50%;
+	    margin-left: 25%;
+	    padding-bottom: 2vw;
+    }
+    #CHECK input{
+	    margin-top: 0.5vw;
+    }
+    input[type="submit"]{
+     	width: 20vw;
+    }
+    input[type="Reset"]{
+     	width: 20vw;
+    }
+    #BOX{
+    	width: 50%;
+	    margin-left: 25%;
+	    background-color: #ffffff;
+	    border: 1px solid black;
+	    text-align: center;
+	    padding-bottom: 1vw;
+    }
+    #BOX p {
+	    font-size: 4vw;
+	    line-height: 8vw;
+    }
+    #UPLOAD{
+	    width: 50%;
+	    margin-left: 25%;
+    }
+    footer{
+	    background-color: #d1d1d1;
+	    text-align: center;
+	    padding-top: 4vw;
+    }
+
+    </style>
+</head>
+    <body>
+        <div>
+            <nav>
+              <div id="LOGO">UCCU</div>
+                <ul>
+		        <li><a href="TBC.html">首頁</a></li>
+		        <li><a href="TBC.html">出勤紀錄</a></li>
+		        <li><a href="TBC.html">操作方式</a></li>
+		        <li><a href="TBC.html">製作團隊</a></li>
+                </ul>
+            </nav>
+            <main>
+                <h3>UCCU Tech 出勤打卡系統</h3>
+                <script language="JavaScript">
+                    function ShowTime(){
+                    　var NowDate=new Date();
+                    　var year=NowDate.getFullYear();
+                    　var month=NowDate.getMonth();
+                    　var day=NowDate.getDate();
+                    　var h=NowDate.getHours();
+                    　var m=NowDate.getMinutes();
+                    　var s=NowDate.getSeconds();　
+                    　document.getElementById('showbox').innerHTML =year+'年'+month+'月'+day+'日'+'   '+h+'時'+m+'分'+s+'秒';
+                    　setTimeout('ShowTime()',1000);
+                    }
+                </script>
+                <body onload="ShowTime()">
+    
+                <h3><div id="showbox"></div></h3>
+                <div id="CHECK">
+                    <input style="width: 100%; height: 4vw; text-align: center;" value="請輸入員工編號"><br>
+                </div>
+                <div id="BOX">
+                    <p>請簽名</p>
+                    <div id="UPLOAD">
+                        <input type="file" accept="image/*,.pdf"><br>
+                    </div>
+                </div>
+                <div id="BUTTOM">
+                    <input style="margin-right: 5vw; margin-left: 27vw;" type="submit" value="確認">
+                    <input type="reset" value="清除">
+                </div>
+            </main>
+            <footer>
+                <p>COPYRIGHT © UCCU</p>	
+            </footer>
+        </div>
+    </body>
+</html>

@@ -25,6 +25,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     # path('', include('Handwriting_recognition.urls')),
     path('admin/', admin.site.urls),
-    path('upload/', index),
-    path('',homepage)
+    path('upload/', image_upload_method),
+    path('post/<slug:slug>', showpost),
+    path('',homepage),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
