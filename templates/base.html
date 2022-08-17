@@ -1,0 +1,43 @@
+<!-- base.html -->
+<html>
+<head>
+    {% include 'header.html' %}
+    <title>
+        {% block title %} 
+        
+        {% endblock %}
+    </title>
+
+    {% load static %}
+
+</head>
+<body>
+{% comment %} 修改內容 {% endcomment %}
+    <div class='container-fluid'>
+        <div class="well post_title">
+            <h1><img width="100" height="100" src="{% static 'img/logo.gif' %}">文齋</h1>
+            <img width="100" height="100" src="../static/img/logo.gif">
+        </div>
+        <div class='panel panel-default'>
+            <div class="row">
+                {% include 'menu.html' %}
+                <div class='col-sm-8 col-md-8'>
+                    <div class="panel-header">
+                        {% block headmessage %} {% endblock %}
+                    </div>
+                    <div class="panel-body">
+                        {% block content %} {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="panel-footer">
+                    {% include 'footer.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% comment %} 修改內容 {% endcomment %}
+
+</body>
+</html>

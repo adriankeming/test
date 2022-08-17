@@ -1,0 +1,31 @@
+<!-- index.html -->
+{% extends 'base.html' %}
+
+{% block title %} 
+歡迎光臨我的部落格 
+{% endblock %}
+
+{% block headmessage %} 
+    <h3 style='font-family:標楷體;'>本站文章列表</a>
+{% endblock %}
+
+
+{% block content %} 
+
+    {% for post in posts %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+            <div class='post_title'>
+                <a href='/post/{{post.slug}}'>{{post.title}}</a>
+            </div>
+            </div>
+            <div class="panel-body">
+                {{post.body | safe | truncatewords_html:'120' }}
+            </div>
+            <div class="panel-footer">
+                {{post.pub_date | date:"Y-m-d H:m:s"}}
+            </div>
+        </div>
+    {% endfor %}
+    
+{% endblock %}
