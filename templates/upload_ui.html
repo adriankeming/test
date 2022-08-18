@@ -158,6 +158,13 @@
     
                 <h3><div id="showbox"></div></h3>
                 <div id="BOX">
+                    {% comment %} context = {
+                        'form': form,
+                        'image_uri': image_uri,
+                        'predicted_label': predicted_label,
+                    } {% endcomment %}
+                    {% comment %} <p> {{ image_uri }}</p>
+                    <p> {{ predicted_label }}</p> {% endcomment %}
                     <form enctype="multipart/form-data" id="id_ajax_upload_form" method="POST" novalidate="">
                         {% csrf_token %}
                         {{ form.as_p }}

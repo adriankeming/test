@@ -1,13 +1,12 @@
-from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
+# from django.urls import path
+# from django.conf import settings
+# from django.conf.urls.static import static
+# from . import views
 
-from . import views
 
+# app_name = 'Handwriting_recognition'
 
-app_name = 'Handwriting_recognition'
-
-urlpatterns = [
-    # two paths: with or without given image
-    path('', views.index, name='index'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns = [
+#     # two paths: with or without given image
+#     path('', views.index, name='index'),
+# ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

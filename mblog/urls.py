@@ -14,13 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
-from django.contrib import admin
 from django.urls import path, include
 from Handwriting_recognition.views import *
 from mainsite.views import homepage, showpost
 from django.conf.urls.static import static
+
+from django.conf import settings
+# from . import views
 
 urlpatterns = [
     # path('', include('Handwriting_recognition.urls')),
@@ -28,4 +28,6 @@ urlpatterns = [
     path('upload/', image_upload_method),
     path('post/<slug:slug>', showpost),
     path('',homepage),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('index/', index),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

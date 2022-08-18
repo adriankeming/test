@@ -27,6 +27,12 @@ def image_upload_method(request):
         form = ImageFileUploadForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            print(form.cleaned_data)
+            image = form.cleaned_data.get('選擇檔案')
+            print(image)
+            name = form.cleaned_data.get('請輸入員工編號')
+            print(name)
+
             return JsonResponse({'error':False, 'message': 'Uploaded Successfully.'})
         else:
             return JsonResponse({'error':True, 'errors': form.errors})
@@ -161,7 +167,7 @@ def index(request):
         form = ImageFileUploadForm(request.POST, request.FILES)
         if form.is_valid():
             # passing the image as base64 string to avoid storing it to DB or filesystem
-            image = form.cleaned_data['image']
+            image = form.cleaned_data['選擇檔案']
             image_bytes = image.file.read()
             encoded_img = base64.b64encode(image_bytes).decode('ascii')
             image_uri = 'data:%s;base64,%s' % ('image/jpeg', encoded_img)
@@ -172,7 +178,11 @@ def index(request):
             except RuntimeError as re:
                 print(re)
                 # predicted_label = "Prediction Error"
-
+            print(predicted_label)
+            if predicted_label == '本人':
+                return JsonResponse({'error':False, 'message': '本人!'})
+            else:
+                return JsonResponse({'error':True, 'message': '非本人!'})
     else:
         form = ImageFileUploadForm()
 
