@@ -182,7 +182,7 @@ def index(request):
             if predicted_label == '本人':
                 return JsonResponse({'error':False, 'message': '簽到成功!'})
             else:
-                return JsonResponse({'error':True, 'message': '先生小姐你哪位???!'})
+                return JsonResponse({'error':False, 'message': '先生小姐你哪位???!'})
     else:
         form = ImageFileUploadForm()
 
