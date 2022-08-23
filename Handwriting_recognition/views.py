@@ -18,6 +18,8 @@ from django.conf import settings
 
 from django.shortcuts import render
 from django.http import JsonResponse
+
+from Handwriting_recognition.models import emp_table
 from .forms import ImageFileUploadForm
 
 # Create your views here.
@@ -180,6 +182,9 @@ def index(request):
                 # predicted_label = "Prediction Error"
             print(predicted_label)
             if predicted_label == '本人':
+                def show_table(request):
+                    isthetable = emp_table.objects.all()
+                    return render(request, 'showTable.html', locals())
                 return JsonResponse({'error':False, 'message': '簽到成功!'})
             else:
                 return JsonResponse({'error':True, 'message': '先生小姐你哪位???!'})
